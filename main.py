@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request, flash
 import requests
 import smtplib
+import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "screensavers"
+app.config['SECRET_KEY'] =  os.environ.get("FLASK_KEY")
 
 
 @app.route('/')
@@ -18,8 +19,8 @@ def submit():
         message = request.form['message']
 
         # Email Configuration
-        sender_email = 'palishpy@gmail.com'
-        receiver_email = 'your_email@example.com'
+        sender_email = ''
+        receiver_email = ''
         password = 'vhbjakyjnuouhpyu'
 
         # Construct the email message
