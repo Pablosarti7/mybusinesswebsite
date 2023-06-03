@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+  
+{% import "bootstrap/wtf.html" as wtf %}
 
-{% include "header.html" %}
 {% block content %}
+{% include "header.html" %}
 
 <body>
 
@@ -11,8 +13,7 @@
     <div class="container-fluid">
 
       <div class="logo">
-        <!-- <h1><a href="index.html">Siimple</a></h1> -->
-        <!-- Uncomment below if you prefer to use an image logo -->
+
         <a href="{{ url_for('home') }}"><img src="static/img/screen_savers.png" alt="screensavers"
             class="img-fluid"></a>
       </div>
@@ -30,33 +31,27 @@
     </div>
   </header><!-- End #header -->
 
-  <!-- ======= Hero Section ======= -->
-
-  <section id="hero">
-    <div class="hero-container">
-      <h1>Screen Savers</h1>
-      <h2>Quality Window Screen Repair Services</h2>
-
-      <!-- <form action="forms/notify.php" method="post" role="form" class="php-email-form">
-        <div class="row no-gutters">
-          <div class="col-md-6 form-group pr-md-1">
-            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-          </div>
-          <div class="col-md-6 form-group pl-md-1">
-            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+  <!-- ======= New Hero Section ======= -->
+<section id="hero">
+    <div class="hero-container py-5">
+      <div class="row py-5 align-items-center">
+        <div class="col-lg-6">
+          <h1 class="black-heading display-4 mb-4 font-weight-bold text-center text-lg-left">Screen Savers</h1>
+          <p class="lead mb-5 text-black-50 text-center text-lg-left">Quality Window Screen Repair Services</p>  
+        </div>
+        
+        <div class="col-lg-6 text-center mt-5 mt-lg-0">
+          <div class="lead-form rounded p-5">
+            <div>
+              <h3 class="font-weight-bold">Get a Quote!</h3>
+              <h6 class="text-black-50 pt-3 pb-4 small font-weight-bold">Fill all fields so we can send some info.<br>We'll never send you spam</h6>
+            </div>
+            {{ wtf.quick_form(form, button_map={"submit": "primary"}) }}
           </div>
         </div>
-
-        <div class="my-3">
-          <div class="loading">Loading</div>
-          <div class="error-message"></div>
-          <div class="sent-message">Your notification request was sent. Thank you!</div>
-        </div>
-        <div class="text-center"><button type="submit">Send Message</button></div>
-      </form> -->
-
+      </div>
     </div>
-  </section><!-- End #hero -->
+</section><!-- End #hero -->
 
   <main id="main">
 
@@ -211,33 +206,14 @@
           </div>
 
           <div class="col-lg-5 col-md-7">
-            <form action="/submit" method="POST" class="php-email-form">
-              <div class="form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-              </div>
-              <div class="form-group mt-3">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-              </div>
-              <!-- <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-              </div> -->
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              {% with messages = get_flashed_messages() %}
-              {% if messages %}
-              {% for message in messages %}
-              <p>{{ message }}</p>
-              {% endfor %}
-              {% endif %}
-              {% endwith %}
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
+            {{ wtf.quick_form(form, button_map={"submit": "primary"}) }}
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
           </div>
 
         </div>
@@ -257,7 +233,7 @@
 
 </body>
 
-{% endblock %}
 {% include "footer.html" %}
+{% endblock %}
 
 </html>
