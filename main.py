@@ -27,8 +27,8 @@ def home():
 
         # Email Configuration
         from_email = email
-        to_email = os.environ.get('MY_EMAIL')
-        to_password = os.environ.get('MY_PASSWORD')
+        to_email = 'palishpy@gmail.com'
+        to_password = 'vhbjakyjnuouhpyu'
 
         # Construct the email message
         subject = 'New Message from Contact Form'
